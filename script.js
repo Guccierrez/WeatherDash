@@ -49,8 +49,53 @@ function getWeatherdata(userInput) {
                     feelsLike.textContent="feels Like: " + weatherArray[0].main.feels_like + "F"
                     humidity.textContent= "Humidity " + weatherArray[0].main.humidity + "%"
                     windSpeed.textContent="Wind Speed " + weatherArray[0].wind.speed + "mph"
-                   // let cardWind1 = document.getElementById("cardWind1")
-                 //   cardWind1.textContent="Wind Speed " + weatherArray[1].wind.speed + "mph"
+                    let cityDay = document.getElementById("cityDay")
+                    cityDay.textContent = weatherInfo.city.name + " (" + weatherArray[0].dt_txt+")"
+                    
+                    let date1 = document.getElementById("date1")
+                    date1.textContent = weatherArray[1].dt_txt
+                    let temp1 = document.getElementById("temp1")
+                    temp1.textContent= "temp: " + weatherArray[1].main.temp + "F"
+                    let wind1 =document.getElementById("wind1")
+                    wind1.textContent = "wind speed:" + weatherArray[1].wind.speed + "mph"
+                    let humid1 = document.getElementById("humid1")
+                    humid1.textContent= "Humidity" + weatherArray[1].main.humidity + "%"
+
+                    let date2 = document.getElementById("date2")
+                    date2.textContent = weatherArray[2].dt_txt
+                    let temp2 = document.getElementById("temp2")
+                    temp2.textContent= "temp: " + weatherArray[2].main.temp + "F"
+                    let wind2 =document.getElementById("wind2")
+                    wind2.textContent = "wind speed:" + weatherArray[2].wind.speed + "mph"
+                    let humid2 = document.getElementById("humid2")
+                    humid2.textContent= "Humidity" + weatherArray[2].main.humidity + "%"
+
+                    let date3 = document.getElementById("date3")
+                    date3.textContent = weatherArray[3].dt_txt
+                    let temp3 = document.getElementById("temp3")
+                    temp3.textContent= "temp: " + weatherArray[3].main.temp + "F"
+                    let wind3 =document.getElementById("wind3")
+                    wind3.textContent = "wind speed:" + weatherArray[3].wind.speed + "mph"
+                    let humid3 = document.getElementById("humid3")
+                    humid3.textContent= "Humidity" + weatherArray[3].main.humidity + "%"
+
+                    let date4 = document.getElementById("date4")
+                    date4.textContent = weatherArray[4].dt_txt
+                    let temp4 = document.getElementById("temp4")
+                    temp4.textContent= "temp: " + weatherArray[4].main.temp + "F"
+                    let wind4 =document.getElementById("wind4")
+                    wind4.textContent = "wind speed:" + weatherArray[4].wind.speed + "mph"
+                    let humid4 = document.getElementById("humid4")
+                    humid4.textContent= "Humidity" + weatherArray[4].main.humidity + "%"
+
+                    let date5 = document.getElementById("date5")
+                    date5.textContent = weatherArray[5].dt_txt
+                    let temp5 = document.getElementById("temp5")
+                    temp5.textContent= "temp: " + weatherArray[5].main.temp + "F"
+                    let wind5 =document.getElementById("wind5")
+                    wind5.textContent = "wind speed:" + weatherArray[5].wind.speed + "mph"
+                    let humid5 = document.getElementById("humid5")
+                    humid5.textContent= "Humidity" + weatherArray[5].main.humidity + "%"
                 })
         });
 
