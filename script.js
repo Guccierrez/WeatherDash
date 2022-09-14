@@ -1,16 +1,24 @@
 let apiKey = "7fbacaf5493a39dce8d922ade258bf98"
 let searchInput = document.querySelector("#searchInput")
 let button = document.querySelector("#searchButton")
+let storage = JSON.parse(localStorage.getItem("citySearchHistory")) || []
 
-console.log(searchInput)
+
 
 function handleFormSubmit(event) {
     event.preventDefault()
 
     let userInput = searchInput.value.trim()
-    console.log(userInput)
+    //console.log(userInput)
     getWeatherdata(userInput)
-}
+    storage.push(userInput)
+    localStorage.setItem("citySearchHistory",JSON.stringify(storage))
+    let listEl = document.createElement("li")
+    listEl.textContent = userInput
+    let showHistory = document.getElementById("showHistory")
+    showHistory.appendChild(listEl)
+} 
+
 button.addEventListener("click", handleFormSubmit)
 function getWeatherdata(userInput) {
 
@@ -105,4 +113,21 @@ function getWeatherdata(userInput) {
 
 
 
-   
+
+// function sendItemsToLocalStorage(){
+    //     let cityHistorys = document.querySelector("searchInput").value
+    //     storage.push(currentstring
+    //         )
+    //     localStorage.setItem("citySearchHistory",JSON.stringify(storage))
+    // }
+    // let showHistory = document.querySelector("#showHistory")
+    
+    
+    
+    // let searchHistory = document.getElementById("#searchHistory")
+    // searchHistory.onClick=sendItemsToLocalStorage
+    
+
+
+
+
