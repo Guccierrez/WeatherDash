@@ -33,7 +33,7 @@ if (storage.length > 0) {
 button.addEventListener("click", handleFormSubmit)
 function getWeatherdata(userInput) {
 
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${userInput}&appid=${apiKey}`)
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${userInput}&appid=${apiKey}`)
         .then(function (response) {
             return response.json()
 
