@@ -12,3 +12,9 @@ body{
 #jumbo{
     margin-left: 60px;
 }
+
+li{
+    list-style-type: none;
+    font-weight:bolder;
+    font-size: large;
+}
