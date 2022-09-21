@@ -4,7 +4,7 @@ let button = document.querySelector("#searchButton")
 let storage = JSON.parse(localStorage.getItem("citySearchHistory")) || []
 
 
-
+// this block of code is initiating the search for the city and to save the search history to local storage
 function handleFormSubmit(event) {
     event.preventDefault()
     let userInput = searchInput.value.trim()
@@ -22,17 +22,17 @@ function handleFormSubmit(event) {
 } 
 
 
-
+//this code was to be able to click search history(work in progress)
 function SearchHistorySearch(){
 if (storage.length > 0) {
     getWeatherdata(storage[storage.length - 1]);
 }
 }
 
-
+// this two funcitons combine to get both API calls going one for locating the city and the second to get weather info
 button.addEventListener("click", handleFormSubmit)
 function getWeatherdata(userInput) {
-
+//this api gets Lat and long data
     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${userInput}&appid=${apiKey}`)
         .then(function (response) {
             return response.json()
@@ -44,7 +44,7 @@ function getWeatherdata(userInput) {
             console.log(cityData[0].lon);
             return { lat: cityData[0].lat, lon: cityData[0].lon }
 
-        })
+        })//this api uses the lat and long from the previous one so the user gets search results for a city rather than lat,long
         .then(function (latLonData) {
             return fetch(`https://api.openweathermap.org/data/2.5/forecast?units=imperial&lat=${latLonData.lat}&lon=${latLonData.lon}&appid=${apiKey}`)
                 .then(function (response) {
@@ -58,6 +58,10 @@ function getWeatherdata(userInput) {
                         weatherArray.push(weatherInfo.list[i])
 
                     }
+                    //these next blocks are basically all the same (they get the element from html, are
+                    //they are assigned information from the API and then is added to the page)
+                    //this is done for the current day then repeated for the 5 day forecast    
+                    console.log(weatherArray)
                     console.log("weatherInfo", weatherInfo);
                     console.log(weatherArray)
                     let temp = document.getElementById("temp")
@@ -70,7 +74,11 @@ function getWeatherdata(userInput) {
                     windSpeed.textContent="Wind Speed " + weatherArray[0].wind.speed + "mph"
                     let cityDay = document.getElementById("cityDay")
                     cityDay.textContent = weatherInfo.city.name + " (" + weatherArray[0].dt_txt+")"
-                    
+                    let iconEl =document.getElementById("iconEl");
+                    iconEl.src = "https://openweathermap.org/img/w/"+ weatherInfo.list[0].weather[0].icon + ".png";
+
+                    let icon1 =document.getElementById("icon1");
+                    icon1.src = "https://openweathermap.org/img/w/"+ weatherInfo.list[7].weather[0].icon + ".png";
                     let date1 = document.getElementById("date1")
                     date1.textContent = weatherArray[1].dt_txt
                     let temp1 = document.getElementById("temp1")
@@ -80,6 +88,8 @@ function getWeatherdata(userInput) {
                     let humid1 = document.getElementById("humid1")
                     humid1.textContent= "Humidity" + weatherArray[1].main.humidity + "%"
 
+                    let icon2 =document.getElementById("icon2");
+                    icon2.src = "https://openweathermap.org/img/w/"+ weatherInfo.list[15].weather[0].icon + ".png";
                     let date2 = document.getElementById("date2")
                     date2.textContent = weatherArray[2].dt_txt
                     let temp2 = document.getElementById("temp2")
@@ -89,6 +99,8 @@ function getWeatherdata(userInput) {
                     let humid2 = document.getElementById("humid2")
                     humid2.textContent= "Humidity" + weatherArray[2].main.humidity + "%"
 
+                    let icon3 =document.getElementById("icon3");
+                    icon3.src = "https://openweathermap.org/img/w/"+ weatherInfo.list[23].weather[0].icon + ".png";
                     let date3 = document.getElementById("date3")
                     date3.textContent = weatherArray[3].dt_txt
                     let temp3 = document.getElementById("temp3")
@@ -98,6 +110,8 @@ function getWeatherdata(userInput) {
                     let humid3 = document.getElementById("humid3")
                     humid3.textContent= "Humidity" + weatherArray[3].main.humidity + "%"
 
+                    let icon4 =document.getElementById("icon4");
+                    icon4.src = "https://openweathermap.org/img/w/"+ weatherInfo.list[30].weather[0].icon + ".png";
                     let date4 = document.getElementById("date4")
                     date4.textContent = weatherArray[4].dt_txt
                     let temp4 = document.getElementById("temp4")
@@ -107,6 +121,8 @@ function getWeatherdata(userInput) {
                     let humid4 = document.getElementById("humid4")
                     humid4.textContent= "Humidity" + weatherArray[4].main.humidity + "%"
 
+                    let icon5 =document.getElementById("icon5");
+                    icon5.src = "https://openweathermap.org/img/w/"+ weatherInfo.list[39].weather[0].icon + ".png";
                     let date5 = document.getElementById("date5")
                     date5.textContent = weatherArray[5].dt_txt
                     let temp5 = document.getElementById("temp5")
